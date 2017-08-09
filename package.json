@@ -1,0 +1,53 @@
+{
+  "name": "dax_blank",
+  "version": "1.0.0",
+  "description": "A blank starter theme for Wordpress based in Foundation framework and Advanced Custom Fields plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcaste/dax_blank.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "foundation\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C",
+    "\u001b[C\u001b[Dtheme",
+    "Foundation",
+    "Advanced",
+    "Custom",
+    "Fields",
+    "starter",
+    "blank"
+  ],
+  "author": "Dax Castellon Meyrat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcaste/dax_blank/issues"
+  },
+  "homepage": "https://github.com/dcaste/dax_blank#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "clean-css": "^4.1.7",
+    "foundation-sites": "^6.4.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.0.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-install": "^1.1.0",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-newer": "^1.3.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sort": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-zip": "^4.0.0",
+    "run-sequence": "^2.1.0"
+  }
+}

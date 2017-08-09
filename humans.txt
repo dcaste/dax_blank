@@ -1,0 +1,8 @@
+/* TEAM */
+Your title: Dax Castellon Meyrat.
+Site: https://github.com/dcaste/dax_blank, daxcastellon@gmail.com
+
+/* SITE */
+Last update: 2017/08/09
+Standards: HTML5, CSS3, PHP7
+Components: jQuery, Zurb's Foundation framework, Advanced Custom Fields plugin, Wordpress

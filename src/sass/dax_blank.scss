@@ -1,0 +1,13 @@
+@charset 'utf-8';
+
+//VARIABLES
+$fonts_serif: 'Open Sans', Georgia, serif;
+$fonts_sans_serif: 'Raleway', Helvetica, Arial, sans-serif;
+
+//IMPORTS
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import 'mixins';
+@import 'basics';
+@import 'wordpress';
+@import 'structure';

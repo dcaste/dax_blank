@@ -29,7 +29,7 @@ if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/js/jquery-3.2.1.min.js', array(), '3.2.1', false );
 
 		// Site scripts loaded at the footer. jQuery is required in the array.
-		wp_enqueue_script( 'site_js', get_template_directory_uri() . '/js/scripts.min.js', array('jquery'), '1.0.0', true );
+		wp_enqueue_script( 'dax_blank_js', get_template_directory_uri() . '/js/scripts.min.js', array('jquery'), '1.0.0', true );
 
 		// Add the comment-reply library on pages where it is necessary.
 		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -18,6 +18,5 @@ if ( $logo_footer ) {
 $logo_output = '<div id="footer-logo-container" itemscope itemtype="http://schema.org/">';
 $logo_output = $logo_output . '<a href="' . home_url() . '" rel="home">';
 $logo_output = $logo_output . '<img itemprop="logo" src="' . $logo_footer_url . '" alt="' . $logo_footer_alt . '" /></a>';
-	echo $logo_output;
 $logo_output = $logo_output . '</div>';
 echo $logo_output;

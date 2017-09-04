@@ -112,10 +112,10 @@ gulp.task( 'sync', function() {
     .pipe( sourcemaps.init() )
     .pipe( sass( {
       errLogToConsole: true,
-      outputStyle: 'compact',
+      // outputStyle: 'compact',
       // outputStyle: 'compressed',
       // outputStyle: 'nested',
-      // outputStyle: 'expanded',
+      outputStyle: 'expanded',
       precision: 10
     } ) )
     .on('error', console.error.bind(console))

@@ -1,12 +1,32 @@
 @charset 'utf-8';
 
+// Fonts.
+// roboto-regular - latin.
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'),
+       url('../fonts/roboto-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* roboto-slab-regular - latin */
+@font-face {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
+       url('../fonts/roboto-slab-v6-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+       url('../fonts/roboto-slab-v6-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
 //VARIABLES
-$fonts_serif: 'Open Sans', Georgia, serif;
-$fonts_sans_serif: 'Raleway', Helvetica, Arial, sans-serif;
+$fonts_serif: 'Roboto Slab', Georgia, serif;
+$fonts_sans_serif: 'Roboto', Helvetica, Arial, sans-serif;
 
 //IMPORTS
-@import url(https://fonts.googleapis.com/css?family=Raleway);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import 'mixins';
 @import 'basics';
 @import 'wordpress';

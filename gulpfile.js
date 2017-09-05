@@ -14,22 +14,22 @@ var productURL              = './'; // Root project folder. It's adviced to leav
 
 // Path to main .scss file. File name should be the same as appears in /functions/enqueque.php
 var styleSRC                = './src/sass/styles.scss'; // SCSS source files.
-var styleDest		        = './css/'; // Path to place compiled CSS file.
+var styleDest		            = './css/'; // Path to place compiled CSS file.
 
 // Path to Js files. Both vendors and custom files will be compiled into one file.
-var jsVendors           	= './src/js/vendors/*.js'; // Vendor JS source files.
+var jsVendors           	  = './src/js/vendors/*.js'; // Vendor JS source files.
 var jsCustom                = './src/js/custom/*.js'; // Path to JS custom source folder.
-var jsDest		     		= './js/'; // Path to place compiled JS scripts file.
-var jsFile            		= 'scripts'; // Compiled JS file name.
+var jsDest		     		      = './js/'; // Path to place compiled JS scripts file.
+var jsFile            		  = 'scripts'; // Compiled JS file name.
 
 var imagesSRC               = './src/img/**/*.{png,jpg,gif,svg}'; // Source images which should be optimized.
-var imagesDest 			    = './img/';
+var imagesDest 			        = './img/';
 
 // Watch files paths.
 var WatchStyles         	= './src/sass/*.scss'; // All *.scss files.
 var WatchJSVendors      	= './src/js/vendors/*.js'; // All vendor JS files.
 var WatchJSCustom   	   	= './src/js/custom/*.js'; // All custom JS files.
-var WatchPHP		    	= './**/*.php'; // All PHP files.
+var WatchPHP		    	    = './**/*.php'; // All PHP files.
 
 // Browsers you care about for autoprefixing.
 // Browserlist https        ://github.com/ai/browserslist
@@ -61,8 +61,9 @@ var mmq          = require('gulp-merge-media-queries'); // Combine matching medi
 // JS related plugins.
 var concat       = require('gulp-concat'); // Concatenates JS files.
 var uglify       = require('gulp-uglify'); // Minifies JS files.
+var pump         = require('pump'); // Error report.
 
-// Image realted plugins.
+// Image related plugins.
 var imagemin     = require('gulp-imagemin'); // Minify PNG, JPEG, GIF and SVG images.
 
 // Utility related plugins.
@@ -82,30 +83,18 @@ var sort         = require('gulp-sort'); // Recommended to prevent unnecessary c
  */
 gulp.task( 'sync', function() {
   browserSync.init( {
-
     proxy: projectURL,
     open: true, // Automatically open the browser with BrowserSync live server.
     injectChanges: true,
     // Use a specific port (instead of the one auto-detected by Browsersync).
     // port: 7000,
-
   } );
 });
 
 
 /**
  * Task: `styles`.
- *
  * Compiles Sass, Autoprefixes it and Minifies CSS.
- *
- * This task does the following:
- *    1. Gets the source scss file
- *    2. Compiles Sass to CSS
- *    3. Writes Sourcemaps for it
- *    4. Autoprefixes it and generates style.css
- *    5. Renames the CSS file with suffix .min.css
- *    6. Minifies the CSS file and generates style.min.css
- *    7. Injects CSS or reloads the browser via browserSync
  */
  gulp.task('styles', function () {
     gulp.src( styleSRC )
@@ -144,15 +133,8 @@ gulp.task( 'sync', function() {
 
 
  /**
-  * Task: `vendorJS`.
-  *
+  * Task: `vendorJS`.  *
   * Concatenate and uglify vendor JS scripts.
-  *
-  * This task does the following:
-  *     1. Gets the source folder for JS vendor files
-  *     2. Concatenates all the files and generates vendors.js
-  *     3. Renames the JS file with suffix .min.js
-  *     4. Uglifes/Minifies the JS file and generates vendors.min.js
   */
  gulp.task( 'vendorsJs', function() {
   gulp.src( jsVendors )
@@ -169,8 +151,7 @@ gulp.task( 'sync', function() {
     .pipe( notify( { message: 'TASK: "vendorsJs" Completed! 💯', onLast: true } ) );
  });
 
-
- /**
+/**
   * Task: `customJS`.
   *
   * Concatenate and uglify custom JS scripts.

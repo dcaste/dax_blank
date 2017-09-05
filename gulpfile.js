@@ -35,11 +35,11 @@ gulp.task('styles', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('./css/'))
+        .pipe(gulp.dest('./assets/css/'))
         .pipe(rename({suffix: '.min'}))
         .pipe(cssnano())
         .pipe(sourcemaps.write('.')) // Creates sourcemaps for minified styles
-        .pipe(gulp.dest('./css/'))
+        .pipe(gulp.dest('./assets/css/'))
 });
 
 // JSHint, concat, and minify JavaScript
@@ -81,11 +81,11 @@ gulp.task('site-js', function() {
     }))
     .pipe(sourcemaps.init())
     .pipe(concat('scripts.js'))
-    .pipe(gulp.dest('./js'))
+    .pipe(gulp.dest('./assets/js'))
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(sourcemaps.write('.')) // Creates sourcemap for minified JS
-    .pipe(gulp.dest('./js'))
+    .pipe(gulp.dest('./assets/js'))
 });
 
 // JSHint, concat, and minify Foundation JavaScript
@@ -160,13 +160,13 @@ gulp.task('browsersync', function() {
 gulp.task('watch', function() {
 
   // Watch .scss files
-  gulp.watch('./assets/scss/**/*.scss', ['styles']);
+  gulp.watch('./src/scss/**/*.scss', ['styles']);
 
   // Watch site-js files
-  gulp.watch('./assets/js/scripts/*.js', ['site-js']);
+  gulp.watch('./src/js/scripts/*.js', ['site-js']);
 
   // Watch foundation-js files
-  gulp.watch('./vendor/foundation-sites/js/*.js', ['foundation-js']);
+  gulp.watch('./node_modules/foundation-sites/js/*.js', ['foundation-js']);
 
 });
 

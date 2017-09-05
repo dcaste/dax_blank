@@ -11,7 +11,7 @@ if ( $logo_footer ) {
 	$logo_footer_url = $logo_footer['url'];
 	$logo_footer_alt = $logo_footer['alt'];
 } else {
-	$logo_footer_url = get_template_directory_uri() . '/img/logo_footer.png';
+	$logo_footer_url = get_template_directory_uri() . '/assets/img/logo_footer.png';
 	$logo_footer_alt = bloginfo( 'name' );
 };
 

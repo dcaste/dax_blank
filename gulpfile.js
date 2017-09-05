@@ -38,7 +38,7 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('./assets/css/'))
         .pipe(rename({suffix: '.min'}))
         .pipe(cssnano())
-        .pipe(sourcemaps.write('.')) // Creates sourcemaps for minified styles
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./assets/css/'))
 });
 
@@ -88,71 +88,22 @@ gulp.task('site-js', function() {
     .pipe(gulp.dest('./assets/js'))
 });
 
-// JSHint, concat, and minify Foundation JavaScript
-gulp.task('foundation-js', function() {
-  return gulp.src([
-
-        // Foundation core - needed if you want to use any of the components below
-          './node_modules/foundation-sites/js/foundation.core.js',
-          './node_modules/foundation-sites/js/foundation.util.*.js',
-
-          // Pick the components you need in your project
-          './node_modules/foundation-sites/js/foundation.abide.js',
-          './node_modules/foundation-sites/js/foundation.accordion.js',
-          './node_modules/foundation-sites/js/foundation.accordionMenu.js',
-          './node_modules/foundation-sites/js/foundation.drilldown.js',
-          './node_modules/foundation-sites/js/foundation.dropdown.js',
-          './node_modules/foundation-sites/js/foundation.dropdownMenu.js',
-          './node_modules/foundation-sites/js/foundation.equalizer.js',
-          './node_modules/foundation-sites/js/foundation.interchange.js',
-          './node_modules/foundation-sites/js/foundation.magellan.js',
-          './node_modules/foundation-sites/js/foundation.offcanvas.js',
-          './node_modules/foundation-sites/js/foundation.orbit.js',
-          './node_modules/foundation-sites/js/foundation.responsiveMenu.js',
-          './node_modules/foundation-sites/js/foundation.responsiveToggle.js',
-          './node_modules/foundation-sites/js/foundation.reveal.js',
-          './node_modules/foundation-sites/js/foundation.slider.js',
-          './node_modules/foundation-sites/js/foundation.sticky.js',
-          './node_modules/foundation-sites/js/foundation.tabs.js',
-          './node_modules/foundation-sites/js/foundation.toggler.js',
-          './node_modules/foundation-sites/js/foundation.tooltip.js',
-  ])
-  .pipe(babel({
-    presets: ['es2015'],
-      compact: true
-  }))
-    .pipe(sourcemaps.init())
-    .pipe(concat('foundation.js'))
-    .pipe(gulp.dest('./assets/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
-    .pipe(sourcemaps.write('.')) // Creates sourcemap for minified Foundation JS
-    .pipe(gulp.dest('./assets/js'))
-});
-
-// Update Foundation with Bower and save to /vendor
-gulp.task('bower', function() {
-  return bower({ cmd: 'update'})
-    .pipe(gulp.dest('vendor/'))
-});
-
 // Browser-Sync watch files and inject changes
 gulp.task('browsersync', function() {
     // Watch files
     var files = [
-      './src/css/*.css',
-      './src/js/*.js',
+      './src/sass/**/*.scss',
+      './src/js/**/*.js',
       '**/*.php',
-      'src/img/**/*.{png,jpg,gif,svg,webp}',
+      './src/img/**/*.{png,jpg,gif,svg,webp}',
     ];
 
     browserSync.init(files, {
-      // Replace with URL of your local site
-      proxy: "http://localhost/wordpress/blank/",
+      proxy: "http://localhost/wordpress/blank/", // Replace with URL of your local site
     });
 
-    gulp.watch('./src/scss/**/*.scss', ['styles']);
-    gulp.watch('./src/js/scripts/*.js', ['site-js']).on('change', browserSync.reload);
+    gulp.watch('./src/sass/**/*.scss', ['styles']);
+    gulp.watch('./src/js/**/*.js', ['site-js']).on('change', browserSync.reload);
 
 });
 
@@ -163,7 +114,7 @@ gulp.task('watch', function() {
   gulp.watch('./src/scss/**/*.scss', ['styles']);
 
   // Watch site-js files
-  gulp.watch('./src/js/scripts/*.js', ['site-js']);
+  gulp.watch('./src/js/**/*.js', ['site-js']);
 
   // Watch foundation-js files
   gulp.watch('./node_modules/foundation-sites/js/*.js', ['foundation-js']);
@@ -172,5 +123,5 @@ gulp.task('watch', function() {
 
 // Run styles, site-js and foundation-js
 gulp.task('default', function() {
-  gulp.start('styles', 'site-js', 'foundation-js');
+  gulp.start('styles', 'site-js');
 });

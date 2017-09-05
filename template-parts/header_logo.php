@@ -11,7 +11,7 @@ if ( $logo_header ) {
 	$logo_header_url = $logo_header['url'];
 	$logo_header_alt = $logo_header['alt'];
 } else {
-	$logo_header_url = get_template_directory_uri() . '/img/logo_header.png';
+	$logo_header_url = get_template_directory_uri() . '/assets/img/logo_header.png';
 	$logo_header_alt = bloginfo( 'name' );
 };
 

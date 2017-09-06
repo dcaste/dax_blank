@@ -22,10 +22,13 @@
 	},
 	"homepage": "https://github.com/dcaste/dax_blank#readme",
 	"devDependencies": {
+		"babel-core": "^6.26.0",
+		"babel-preset-es2015": "^6.24.1",
 		"browser-sync": "^2.11.1",
 		"foundation-sites": "^6.4.3",
 		"gulp": "^3.9.1",
 		"gulp-autoprefixer": "^3.1.0",
+		"gulp-babel": "^7.0.0",
 		"gulp-concat": "^2.5.2",
 		"gulp-filter": "^4.0.0",
 		"gulp-imagemin": "^2.4.0",

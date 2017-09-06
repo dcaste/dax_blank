@@ -44,6 +44,10 @@ var jquerySRC             = './node_modules/jquery/dist/jquery.js';
 var jqueryDestination     = './assets/js/';
 var jqueryFile            = 'jquery'; // Compiled JS custom file name.
 
+// Foundation JS related.
+var jsFoundationDestination     = './assets/js/';
+var jsFoundationFile            = 'foundation'; // Compiled Foundation JS file name.
+
 // Images related.
 var imagesSRC               = './src/img/**/*.{png,jpg,gif,svg}'; // Source folder of images to be optimized.
 var imagesDestination       = './assets/img/'; // Destination folder of optimized images.
@@ -58,17 +62,17 @@ var projectPHPWatchFiles    = './**/*.php'; // Path to all PHP files.
 // Browsers you care about for autoprefixing.
 // Browserlist https        ://github.com/ai/browserslist
 const AUTOPREFIXER_BROWSERS = [
-    'last 2 version',
-    '> 1%',
-    'ie >= 9',
-    'ie_mob >= 10',
-    'ff >= 30',
-    'chrome >= 34',
-    'safari >= 7',
-    'opera >= 23',
-    'ios >= 7',
-    'android >= 4',
-    'bb >= 10'
+	'last 2 version',
+	'> 1%',
+	'ie >= 9',
+	'ie_mob >= 10',
+	'ff >= 30',
+	'chrome >= 34',
+	'safari >= 7',
+	'opera >= 23',
+	'ios >= 7',
+	'android >= 4',
+	'bb >= 10'
   ];
 
 // STOP Editing Project Variables.
@@ -89,6 +93,7 @@ var mmq          = require('gulp-merge-media-queries'); // Combine matching medi
 // JS related plugins.
 var concat       = require('gulp-concat'); // Concatenates JS files
 var uglify       = require('gulp-uglify'); // Minifies JS files
+var babel   	 = require('gulp-babel');
 
 // Image realted plugins.
 var imagemin     = require('gulp-imagemin'); // Minify PNG, JPEG, GIF and SVG images with imagemin.
@@ -118,22 +123,22 @@ var sort         = require('gulp-sort'); // Recommended to prevent unnecessary c
 gulp.task( 'browser-sync', function() {
   browserSync.init( {
 
-    // For more options
-    // @link http://www.browsersync.io/docs/options/
+	// For more options
+	// @link http://www.browsersync.io/docs/options/
 
-    // Project URL.
-    proxy: projectURL,
+	// Project URL.
+	proxy: projectURL,
 
-    // `true` Automatically open the browser with BrowserSync live server.
-    // `false` Stop the browser from automatically opening.
-    open: true,
+	// `true` Automatically open the browser with BrowserSync live server.
+	// `false` Stop the browser from automatically opening.
+	open: true,
 
-    // Inject CSS changes.
-    // Commnet it to reload browser for every CSS change.
-    injectChanges: true,
+	// Inject CSS changes.
+	// Commnet it to reload browser for every CSS change.
+	injectChanges: true,
 
-    // Use a specific port (instead of the one auto-detected by Browsersync).
-    // port: 7000,
+	// Use a specific port (instead of the one auto-detected by Browsersync).
+	// port: 7000,
 
   } );
 });
@@ -154,40 +159,40 @@ gulp.task( 'browser-sync', function() {
  *    7. Injects CSS or reloads the browser via browserSync
  */
  gulp.task('styles', function () {
-    gulp.src( styleSRC )
-    .pipe( sourcemaps.init() )
-    .pipe( sass( {
-      errLogToConsole: true,
-      // outputStyle: 'compact',
-      // outputStyle: 'compressed',
-      // outputStyle: 'nested',
-      outputStyle: 'expanded',
-      precision: 10
-    } ) )
-    .on('error', console.error.bind(console))
-    .pipe( sourcemaps.write( { includeContent: false } ) )
-    .pipe( sourcemaps.init( { loadMaps: true } ) )
-    .pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+	gulp.src( styleSRC )
+	.pipe( sourcemaps.init() )
+	.pipe( sass( {
+	  errLogToConsole: true,
+	  // outputStyle: 'compact',
+	  // outputStyle: 'compressed',
+	  // outputStyle: 'nested',
+	  outputStyle: 'expanded',
+	  precision: 10
+	} ) )
+	.on('error', console.error.bind(console))
+	.pipe( sourcemaps.write( { includeContent: false } ) )
+	.pipe( sourcemaps.init( { loadMaps: true } ) )
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
 
-    .pipe( sourcemaps.write ( './' ) )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( styleDestination ) )
+	.pipe( sourcemaps.write ( './' ) )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( styleDestination ) )
 
-    .pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
-    .pipe( mmq( { log: true } ) ) // Merge Media Queries only for .min.css version.
+	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+	.pipe( mmq( { log: true } ) ) // Merge Media Queries only for .min.css version.
 
-    .pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
+	.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
 
-    .pipe( rename( { suffix: '.min' } ) )
-    .pipe( minifycss( {
-      maxLineLen: 10
-    }))
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( styleDestination ) )
+	.pipe( rename( { suffix: '.min' } ) )
+	.pipe( minifycss( {
+	  maxLineLen: 10
+	}))
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( styleDestination ) )
 
-    .pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
-    .pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
-    .pipe( notify( { message: 'TASK: "styles" Completed! 💯', onLast: true } ) )
+	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+	.pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
+	.pipe( notify( { message: 'TASK: "styles" Completed! 💯', onLast: true } ) )
  });
 
 
@@ -204,17 +209,17 @@ gulp.task( 'browser-sync', function() {
   */
  gulp.task( 'vendorsJs', function() {
   gulp.src( jsVendorSRC )
-    .pipe( concat( jsVendorFile + '.js' ) )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsVendorDestination ) )
-    .pipe( rename( {
-      basename: jsVendorFile,
-      suffix: '.min'
-    }))
-    .pipe( uglify() )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsVendorDestination ) )
-    .pipe( notify( { message: 'TASK: "vendorsJs" Completed! 💯', onLast: true } ) );
+	.pipe( concat( jsVendorFile + '.js' ) )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsVendorDestination ) )
+	.pipe( rename( {
+	  basename: jsVendorFile,
+	  suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsVendorDestination ) )
+	.pipe( notify( { message: 'TASK: "vendorsJs" Completed! 💯', onLast: true } ) );
  });
 
 
@@ -230,37 +235,86 @@ gulp.task( 'browser-sync', function() {
   *     4. Uglifes/Minifies the JS file and generates custom.min.js
   */
  gulp.task( 'customJS', function() {
-    gulp.src( jsCustomSRC )
-    .pipe( concat( jsCustomFile + '.js' ) )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsCustomDestination ) )
-    .pipe( rename( {
-      basename: jsCustomFile,
-      suffix: '.min'
-    }))
-    .pipe( uglify() )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsCustomDestination ) )
-    .pipe( notify( { message: 'TASK: "customJs" Completed! 💯', onLast: true } ) );
+	gulp.src( jsCustomSRC )
+	.pipe( concat( jsCustomFile + '.js' ) )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsCustomDestination ) )
+	.pipe( rename( {
+	  basename: jsCustomFile,
+	  suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsCustomDestination ) )
+	.pipe( notify( { message: 'TASK: "customJs" Completed! 💯', onLast: true } ) );
  });
 
  /**
-  * Task: `jquery`.  *
-  * Concatenate and uglify jQuery.  *
+  * Task: `jquery`.
+  * Concatenate and uglify jQuery if you need jQuery to be enqueued separately.
   */
  gulp.task( 'jquery', function() {
-    gulp.src( jquerySRC )
-    .pipe( concat( jqueryFile + '.js' ) )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jqueryDestination ) )
-    .pipe( rename( {
-      basename: jqueryFile,
-      suffix: '.min'
-    }))
-    .pipe( uglify() )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jqueryDestination ) )
-    .pipe( notify( { message: 'TASK: "jquery" Completed! 💯', onLast: true } ) );
+	gulp.src( jquerySRC )
+	.pipe( concat( jqueryFile + '.js' ) )
+	.pipe( lineec() )
+	.pipe( gulp.dest( jqueryDestination ) )
+	.pipe( rename( {
+	  basename: jqueryFile,
+	  suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( jqueryDestination ) )
+	.pipe( notify( { message: 'TASK: "jquery" Completed! 💯', onLast: true } ) );
+ });
+
+ /**
+  * Task: `foundationJS`.
+  * Concatenate and uglify Foundation JS files if you need Foundation to be enqueued separately.
+  */
+ gulp.task( 'foundationJS', function() {
+	return gulp.src([
+
+		// Foundation core - needed if you want to use any of the components below
+		'./node_modules/foundation-sites/js/foundation.core.js',
+		'./node_modules/foundation-sites/js/foundation.util.*.js',
+
+		// Pick the components you need in your project
+		'./node_modules/foundation-sites/js/foundation.abide.js',
+		'./node_modules/foundation-sites/js/foundation.accordion.js',
+		'./node_modules/foundation-sites/js/foundation.accordionMenu.js',
+		'./node_modules/foundation-sites/js/foundation.drilldown.js',
+		'./node_modules/foundation-sites/js/foundation.dropdown.js',
+		'./node_modules/foundation-sites/js/foundation.dropdownMenu.js',
+		'./node_modules/foundation-sites/js/foundation.equalizer.js',
+		'./node_modules/foundation-sites/js/foundation.interchange.js',
+		'./node_modules/foundation-sites/js/foundation.magellan.js',
+		'./node_modules/foundation-sites/js/foundation.offcanvas.js',
+		'./node_modules/foundation-sites/js/foundation.orbit.js',
+		'./node_modules/foundation-sites/js/foundation.responsiveMenu.js',
+		'./node_modules/foundation-sites/js/foundation.responsiveToggle.js',
+		'./node_modules/foundation-sites/js/foundation.reveal.js',
+		'./node_modules/foundation-sites/js/foundation.slider.js',
+		'./node_modules/foundation-sites/js/foundation.sticky.js',
+		'./node_modules/foundation-sites/js/foundation.tabs.js',
+		'./node_modules/foundation-sites/js/foundation.toggler.js',
+		'./node_modules/foundation-sites/js/foundation.tooltip.js',
+	])
+	.pipe(babel({
+		presets: ['es2015'],
+	    compact: true
+	}))
+	.pipe( concat( jsFoundationFile + '.js' ) )
+	.pipe( lineec() )
+	.pipe( gulp.dest( jsFoundationDestination ) )
+	.pipe( rename( {
+	  basename: jsFoundationFile,
+	  suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() )
+	.pipe( gulp.dest( jsFoundationDestination ) )
+	.pipe( notify( { message: 'TASK: "foundationJS" Completed! 💯', onLast: true } ) );
  });
 
  /**
@@ -269,18 +323,18 @@ gulp.task( 'browser-sync', function() {
   *
   */
  gulp.task( 'allJS', function() {
-    return gulp.src( [jsCustomSRC,jsVendorJs,jquery] )
-    .pipe( concat( jsCustomFile + '.js' ) )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsCustomDestination ) )
-    .pipe( rename( {
-      basename: jsCustomFile,
-      suffix: '.min'
-    }))
-    .pipe( uglify() )
-    .pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-    .pipe( gulp.dest( jsCustomDestination ) )
-    .pipe( notify( { message: 'TASK: "allJs" Completed! 💯', onLast: true } ) );
+	return gulp.src( [jsCustomSRC,jsVendorJs,jquery] )
+	.pipe( concat( jsCustomFile + '.js' ) )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsCustomDestination ) )
+	.pipe( rename( {
+	  basename: jsCustomFile,
+	  suffix: '.min'
+	}))
+	.pipe( uglify() )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( jsCustomDestination ) )
+	.pipe( notify( { message: 'TASK: "allJs" Completed! 💯', onLast: true } ) );
  });
 
  /**
@@ -298,14 +352,14 @@ gulp.task( 'browser-sync', function() {
   */
  gulp.task( 'images', function() {
   gulp.src( imagesSRC )
-    .pipe( imagemin( {
-          progressive: true,
-          optimizationLevel: 3, // 0-7 low-high
-          interlaced: true,
-          svgoPlugins: [{removeViewBox: false}]
-        } ) )
-    .pipe(gulp.dest( imagesDestination ))
-    .pipe( notify( { message: 'TASK: "images" Completed! 💯', onLast: true } ) );
+	.pipe( imagemin( {
+		  progressive: true,
+		  optimizationLevel: 3, // 0-7 low-high
+		  interlaced: true,
+		  svgoPlugins: [{removeViewBox: false}]
+		} ) )
+	.pipe(gulp.dest( imagesDestination ))
+	.pipe( notify( { message: 'TASK: "images" Completed! 💯', onLast: true } ) );
  });
 
 
@@ -319,18 +373,18 @@ gulp.task( 'browser-sync', function() {
   *     4. Generate a .pot file of i18n that can be used for l10n to build .mo file
   */
  gulp.task( 'translate', function () {
-     return gulp.src( projectPHPWatchFiles )
-         .pipe(sort())
-         .pipe(wpPot( {
-             domain        : text_domain,
-             destFile      : destFile,
-             package       : packageName,
-             bugReport     : bugReport,
-             lastTranslator: lastTranslator,
-             team          : team
-         } ))
-        .pipe(gulp.dest(destFile))
-        .pipe( notify( { message: 'TASK: "translate" Completed! 💯', onLast: true } ) )
+	 return gulp.src( projectPHPWatchFiles )
+		 .pipe(sort())
+		 .pipe(wpPot( {
+			 domain        : text_domain,
+			 destFile      : destFile,
+			 package       : packageName,
+			 bugReport     : bugReport,
+			 lastTranslator: lastTranslator,
+			 team          : team
+		 } ))
+		.pipe(gulp.dest(destFile))
+		.pipe( notify( { message: 'TASK: "translate" Completed! 💯', onLast: true } ) )
 
  });
 

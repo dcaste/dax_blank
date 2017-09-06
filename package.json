@@ -1,44 +1,44 @@
 {
-  "name": "dax_blank",
-  "version": "1.0.0",
-  "description": "A blank starter theme for Wordpress based in Foundation framework and Advanced Custom Fields plugin",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dcaste/dax_blank.git"
-  },
-  "keywords": [
-    "wordpress",
-    "theme",
-    "Foundation",
-    "Advanced",
-    "Custom",
-    "Fields",
-    "starter",
-    "blank"
-  ],
-  "author": "Dax Castellon Meyrat",
-  "license": "GPL-2.0 AND MIT",
-  "bugs": {
-    "url": "https://github.com/dcaste/dax_blank/issues"
-  },
-  "homepage": "https://github.com/dcaste/dax_blank#readme",
-  "devDependencies": {
-    "babel-preset-es2015": "^6.5.0",
-    "browser-sync": "^2.11.0",
-    "foundation-sites": "^6.4.3",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-bower": "0.0.10",
-    "gulp-concat": "^2.5.2",
-    "gulp-cssnano": "^2.1.1",
-    "gulp-jshint": "^1.11.0",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.1",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.2.0",
-    "gulp-util": "^3.0.5",
-    "jshint-stylish": "^2.0.0"
-  }
+	"name": "dax_blank",
+	"version": "1.0.0",
+	"description": "A blank starter theme for Wordpress based in Foundation framework and Advanced Custom Fields plugin",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/dcaste/dax_blank.git"
+	},
+	"keywords": [
+		"wordpress",
+		"theme",
+		"Foundation",
+		"Advanced Custom Fields",
+		"ACF",
+		"starter",
+		"blank"
+	],
+	"author": "Dax Castellon Meyrat",
+	"license": "GPL-2.0",
+	"bugs": {
+		"url": "https://github.com/dcaste/dax_blank/issues"
+	},
+	"homepage": "https://github.com/dcaste/dax_blank#readme",
+	"devDependencies": {
+		"browser-sync": "^2.11.1",
+		"foundation-sites": "^6.4.3",
+		"gulp": "^3.9.1",
+		"gulp-autoprefixer": "^3.1.0",
+		"gulp-concat": "^2.5.2",
+		"gulp-filter": "^4.0.0",
+		"gulp-imagemin": "^2.4.0",
+		"gulp-line-ending-corrector": "^1.0.1",
+		"gulp-merge-media-queries": "^0.2.1",
+		"gulp-notify": "^2.2.0",
+		"gulp-rename": "^1.2.0",
+		"gulp-sass": "^2.2.0",
+		"gulp-sort": "^2.0.0",
+		"gulp-sourcemaps": "^1.5.2",
+		"gulp-uglify": "^1.5.3",
+		"gulp-uglifycss": "^1.0.6",
+		"gulp-wp-pot": "^1.2.2",
+		"jquery": "^3.2.1"
+	}
 }

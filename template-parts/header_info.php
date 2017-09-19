@@ -10,7 +10,7 @@ $your_address 	= get_field( 'schema_address', 'option' );
 $your_phone		= get_field( 'schema_phone', 'option' );
 $your_email 	= get_field( 'schema_email', 'option' );
 
-if ( $your_address || $your_email || $your_phone ): ?>
+if ( $your_address || $your_email || $your_phone ) : ?>
 
 	<div id="header-info">
 		<div class="row">
@@ -39,4 +39,4 @@ if ( $your_address || $your_email || $your_phone ): ?>
 		</div>
 	</div>
 
-<?php endif // Ends if there is contact info. ?>
+<?php endif; // Ends if there is contact info. ?>

@@ -26,7 +26,7 @@ if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 		wp_deregister_script( 'jquery' );
 
 		// jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery-3.2.1.min.js', array(), '3.2.1', false );
+		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.min.js', array(), '3.2.1', false );
 
 		// Site scripts loaded at the footer. jQuery is required in the array.
 		wp_enqueue_script( 'dax_blank_js', get_template_directory_uri() . '/assets/js/scripts.min.js', array('jquery'), '1.0.0', true );

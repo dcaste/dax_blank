@@ -1,4 +1,27 @@
 #main-header{
+
 	padding: 1em 0em;
 	background: $grey_light;
+
+	#header-logo-container{
+		a{
+			display: block;
+
+			h1{
+
+					line-height: 1;
+					margin: 0px;
+					padding: 0px;
+					font-size: inherit;
+
+					span{
+						text-indent: -9999px;
+						position: absolute;
+					}
+
+			}
+		}
+	}
+
+
 }

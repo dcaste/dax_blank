@@ -20,12 +20,15 @@ get_header();
 	<body <?php body_class(); ?> >
 
 		<!-- Main header. -->
-		<header id="main-header">
+		<header>
+
+			<!-- Contact information. -->
+			<?php get_template_part( 'template-parts/header_info' ); ?>
+			<!-- Ends Contact information. -->
 
 			<!-- Logo, Main Navigation Menu and Social Media icons. -->
-			<div id="nav-main">
-				<div>
-					<?php get_template_part( 'template-parts/header_info' ); ?>
+			<div id="main-header">
+				<div class="row">
 					<?php get_template_part( 'template-parts/header_logo' ); ?>
 					<?php get_template_part( 'template-parts/header_main_menu' ); ?>
 					<?php get_template_part( 'template-parts/header_social' ); ?>

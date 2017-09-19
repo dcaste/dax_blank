@@ -100,8 +100,7 @@ add_action('woocommerce_after_main_content', 'dax_blank_after_content', 10);
 
 // Removes script version in filenames.
 function remove_script_version( $src ){
-	$parts = explode( '?ver', $src );
-        return $parts[0];
+	return remove_query_arg( 'ver', $src );
 }
 add_filter( 'script_loader_src', 'remove_script_version', 15, 1 );
 add_filter( 'style_loader_src', 'remove_script_version', 15, 1 );

@@ -5,26 +5,26 @@
  * @package dax_blank
  */
 
-// Info del restaurante HEADER.
-$rest_dir = get_field( 'schema_dir', 'option' );
-$rest_tel = get_field( 'schema_tel', 'option' );
-$rest_email = get_field( 'schema_email', 'option' );
+// Your contact info.
+$your_address 	= get_field( 'schema_address', 'option' );
+$your_phone		= get_field( 'schema_phone', 'option' );
+$your_email 	= get_field( 'schema_email', 'option' );
 
-if ( $rest_dir ) { ?>
+if ( $your_address ) { ?>
 	<div class="info" itemprop="address">
 		<i class="fa fa-map-marker" aria-hidden="true"></i>
-		<span itemprop="streetAddress"><?php echo esc_html( $rest_dir ); ?></span>
+		<span itemprop="streetAddress"><?php echo esc_html( $your_address ); ?></span>
 	</div>
 <?php } ?>
-<?php if ( $rest_tel ) { ?>
+<?php if ( $your_phone) { ?>
 	<div class="info">
 		<i class="fa fa-phone" aria-hidden="true"></i>
-		<span itemprop="telephone"><a href="tel:<?php echo esc_html( $rest_tel ); ?>"><?php echo esc_html( $rest_tel ); ?></a></span>
+		<span itemprop="telephone"><a href="tel:<?php echo esc_html( $your_phone); ?>"><?php echo esc_html( $your_phone); ?></a></span>
 	</div>
 <?php } ?>
-<?php if ( $rest_email ) { ?>
+<?php if ( $your_email ) { ?>
 	<div class="info">
 		<i class="fa fa-envelope" aria-hidden="true"></i>
-		<span itemprop="email"><?php echo esc_html( $rest_email ); ?></span>
+		<span itemprop="email"><?php echo esc_html( $your_email ); ?></span>
 	</div>
 <?php } ?>

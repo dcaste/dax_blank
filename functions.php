@@ -19,7 +19,7 @@ require_once( get_template_directory().'/functions/enqueue.php' );
 require_once( get_template_directory().'/functions/widgets.php' );
 
 // Clean up functions.
-require_once( get_template_directory().'/functions/cleanup.php' );
+// require_once( get_template_directory().'/functions/cleanup.php' );
 
 // Clean up menu code.
 // require_once( get_template_directory().'/functions/cleanup_menu.php' );

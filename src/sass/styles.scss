@@ -30,6 +30,7 @@
  */
 $fonts_serif: 'Roboto Slab', Georgia, serif;
 $fonts_sans_serif: 'Roboto', Helvetica, Arial, sans-serif;
+$grey_light: #eee;
 
 /**
  * Imports
@@ -88,3 +89,4 @@ $fonts_sans_serif: 'Roboto', Helvetica, Arial, sans-serif;
 @import 'basics';
 @import 'wordpress';
 @import 'structure';
+@import 'header';

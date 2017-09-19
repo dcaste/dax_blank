@@ -31,7 +31,7 @@ var styleDestination        = './assets/css/'; // Path to place the compiled CSS
 
 // JS Vendor related.
 var jsVendorSRC             = './src/js/vendors/*.js'; // Path to JS vendor folder.
-var jsVendorDestination     = './assets/js/'; // Path to place the compiled JS vendors file.
+var jsVendorDestination     = './src/js/vendors/'; // Path to place the compiled JS vendors file.
 var jsVendorFile            = 'vendors'; // Compiled JS vendors file name.
 
 // JS Custom related.
@@ -47,6 +47,32 @@ var jqueryFile            = 'jquery'; // Compiled JS custom file name.
 // Foundation JS related.
 var jsFoundationDestination     = './assets/js/';
 var jsFoundationFile            = 'foundation'; // Compiled Foundation JS file name.
+var jsFoundationSRC = [
+		// Foundation core - needed if you want to use any of the components below
+		'./node_modules/foundation-sites/js/foundation.core.js',
+		'./node_modules/foundation-sites/js/foundation.util.*.js',
+
+		// Pick the components you need in your project
+		'./node_modules/foundation-sites/js/foundation.abide.js',
+		'./node_modules/foundation-sites/js/foundation.accordion.js',
+		'./node_modules/foundation-sites/js/foundation.accordionMenu.js',
+		'./node_modules/foundation-sites/js/foundation.drilldown.js',
+		'./node_modules/foundation-sites/js/foundation.dropdown.js',
+		'./node_modules/foundation-sites/js/foundation.dropdownMenu.js',
+		'./node_modules/foundation-sites/js/foundation.equalizer.js',
+		'./node_modules/foundation-sites/js/foundation.interchange.js',
+		'./node_modules/foundation-sites/js/foundation.magellan.js',
+		'./node_modules/foundation-sites/js/foundation.offcanvas.js',
+		'./node_modules/foundation-sites/js/foundation.orbit.js',
+		'./node_modules/foundation-sites/js/foundation.responsiveMenu.js',
+		'./node_modules/foundation-sites/js/foundation.responsiveToggle.js',
+		'./node_modules/foundation-sites/js/foundation.reveal.js',
+		'./node_modules/foundation-sites/js/foundation.slider.js',
+		'./node_modules/foundation-sites/js/foundation.sticky.js',
+		'./node_modules/foundation-sites/js/foundation.tabs.js',
+		'./node_modules/foundation-sites/js/foundation.toggler.js',
+		'./node_modules/foundation-sites/js/foundation.tooltip.js',
+	];
 
 // Images related.
 var imagesSRC               = './src/img/**/*.{png,jpg,gif,svg}'; // Source folder of images to be optimized.
@@ -146,17 +172,8 @@ gulp.task( 'browser-sync', function() {
 
 /**
  * Task: `styles`.
+ * Compiles Sass. Use it in development.
  *
- * Compiles Sass, Autoprefixes it and Minifies CSS.
- *
- * This task does the following:
- *    1. Gets the source scss file
- *    2. Compiles Sass to CSS
- *    3. Writes Sourcemaps for it
- *    4. Autoprefixes it and generates style.css
- *    5. Renames the CSS file with suffix .min.css
- *    6. Minifies the CSS file and generates style.min.css
- *    7. Injects CSS or reloads the browser via browserSync
  */
  gulp.task('styles', function () {
 	gulp.src( styleSRC )
@@ -175,7 +192,7 @@ gulp.task( 'browser-sync', function() {
 	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
 
 	.pipe( sourcemaps.write ( './' ) )
-	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( lineec() )
 	.pipe( gulp.dest( styleDestination ) )
 
 	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
@@ -183,29 +200,56 @@ gulp.task( 'browser-sync', function() {
 
 	.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
 
-	.pipe( rename( { suffix: '.min' } ) )
-	.pipe( minifycss( {
-	  maxLineLen: 10
-	}))
-	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-	.pipe( gulp.dest( styleDestination ) )
-
-	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
-	.pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
 	.pipe( notify( { message: 'TASK: "styles" Completed! 💯', onLast: true } ) )
  });
+
+ /**
+  * Task: `minify-styles`.
+  * Compiles Sass, Autoprefixes it and Minifies CSS. Use it in production.
+  *
+  */
+  gulp.task('minify-styles', function () {
+ 	gulp.src( styleSRC )
+ 	.pipe( sourcemaps.init() )
+ 	.pipe( sass( {
+ 	  errLogToConsole: true,
+ 	  // outputStyle: 'compact',
+ 	  // outputStyle: 'compressed',
+ 	  // outputStyle: 'nested',
+ 	  outputStyle: 'expanded',
+ 	  precision: 10
+ 	} ) )
+ 	.on('error', console.error.bind(console))
+ 	.pipe( sourcemaps.write( { includeContent: false } ) )
+ 	.pipe( sourcemaps.init( { loadMaps: true } ) )
+ 	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+
+ 	.pipe( sourcemaps.write ( './' ) )
+ 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+ 	.pipe( gulp.dest( styleDestination ) )
+
+ 	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+ 	.pipe( mmq( { log: true } ) ) // Merge Media Queries only for .min.css version.
+
+ 	.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
+
+ 	.pipe( rename( { suffix: '.min' } ) )
+ 	.pipe( minifycss( {
+ 	  maxLineLen: 10
+ 	}))
+ 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+ 	.pipe( gulp.dest( styleDestination ) )
+
+ 	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+ 	.pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
+ 	.pipe( notify( { message: 'TASK: "minify-styles" Completed! 💯', onLast: true } ) )
+  });
 
 
  /**
   * Task: `vendorJS`.
-  *
   * Concatenate and uglify vendor JS scripts.
   *
-  * This task does the following:
-  *     1. Gets the source folder for JS vendor files
-  *     2. Concatenates all the files and generates vendors.js
-  *     3. Renames the JS file with suffix .min.js
-  *     4. Uglifes/Minifies the JS file and generates vendors.min.js
   */
  gulp.task( 'vendorsJs', function() {
   gulp.src( jsVendorSRC )
@@ -271,49 +315,24 @@ gulp.task( 'browser-sync', function() {
  /**
   * Task: `foundationJS`.
   * Concatenate and uglify Foundation JS files if you need Foundation to be enqueued separately.
+  * Foundation is saved in src/js/vendors by default to be concatenated with other JS files.
   */
  gulp.task( 'foundationJS', function() {
-	return gulp.src([
-
-		// Foundation core - needed if you want to use any of the components below
-		'./node_modules/foundation-sites/js/foundation.core.js',
-		'./node_modules/foundation-sites/js/foundation.util.*.js',
-
-		// Pick the components you need in your project
-		'./node_modules/foundation-sites/js/foundation.abide.js',
-		'./node_modules/foundation-sites/js/foundation.accordion.js',
-		'./node_modules/foundation-sites/js/foundation.accordionMenu.js',
-		'./node_modules/foundation-sites/js/foundation.drilldown.js',
-		'./node_modules/foundation-sites/js/foundation.dropdown.js',
-		'./node_modules/foundation-sites/js/foundation.dropdownMenu.js',
-		'./node_modules/foundation-sites/js/foundation.equalizer.js',
-		'./node_modules/foundation-sites/js/foundation.interchange.js',
-		'./node_modules/foundation-sites/js/foundation.magellan.js',
-		'./node_modules/foundation-sites/js/foundation.offcanvas.js',
-		'./node_modules/foundation-sites/js/foundation.orbit.js',
-		'./node_modules/foundation-sites/js/foundation.responsiveMenu.js',
-		'./node_modules/foundation-sites/js/foundation.responsiveToggle.js',
-		'./node_modules/foundation-sites/js/foundation.reveal.js',
-		'./node_modules/foundation-sites/js/foundation.slider.js',
-		'./node_modules/foundation-sites/js/foundation.sticky.js',
-		'./node_modules/foundation-sites/js/foundation.tabs.js',
-		'./node_modules/foundation-sites/js/foundation.toggler.js',
-		'./node_modules/foundation-sites/js/foundation.tooltip.js',
-	])
+	return gulp.src( jsFoundationSRC )
 	.pipe(babel({
 		presets: ['es2015'],
 	    compact: true
 	}))
 	.pipe( concat( jsFoundationFile + '.js' ) )
 	.pipe( lineec() )
-	.pipe( gulp.dest( jsFoundationDestination ) )
+	.pipe( gulp.dest( jsVendorDestination ) ) // You can use Foundation or Vendor destination.
 	.pipe( rename( {
 	  basename: jsFoundationFile,
 	  suffix: '.min'
 	}))
 	.pipe( uglify() )
 	.pipe( lineec() )
-	.pipe( gulp.dest( jsFoundationDestination ) )
+	.pipe( gulp.dest( jsVendorDestination ) )
 	.pipe( notify( { message: 'TASK: "foundationJS" Completed! 💯', onLast: true } ) );
  });
 
@@ -323,7 +342,11 @@ gulp.task( 'browser-sync', function() {
   *
   */
  gulp.task( 'allJS', function() {
-	return gulp.src( [jsCustomSRC,jsVendorJs,jquery] )
+	return gulp.src( [jquerySRC,jsVendorSRC,jsCustomSRC] )
+	.pipe(babel({
+		presets: ['es2015'],
+	    compact: true
+	}))
 	.pipe( concat( jsCustomFile + '.js' ) )
 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 	.pipe( gulp.dest( jsCustomDestination ) )

@@ -20,7 +20,7 @@ get_header();
 	<body <?php body_class(); ?> >
 
 		<!-- Main header. -->
-		<header>
+		<header id="main-header">
 
 			<!-- Logo, Main Navigation Menu and Social Media icons. -->
 			<div id="nav-main">

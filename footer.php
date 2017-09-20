@@ -13,6 +13,7 @@
 			<div id="copyright"><?php bloginfo('name'); ?> &copy; <?php echo date('Y'); ?> - All Rights Reserved.</div>
 
 		</footer>
+
 		<?php wp_footer(); ?>
 
 	</body>

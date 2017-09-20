@@ -36,42 +36,47 @@ var jsVendorFile            = 'vendors'; // Compiled JS vendors file name.
 
 // JS Custom related.
 var jsCustomSRC             = './src/js/custom/*.js'; // Path to JS custom scripts folder.
-var jsCustomDestination     = './assets/js/'; // Path to place the compiled JS custom scripts file.
-var jsCustomFile            = 'scripts'; // Compiled JS custom file name.
+var jsCustomDestination     = './src/js/custom/'; // Path to place the compiled JS custom scripts file.
+var jsCustomFile            = 'custom_scripts'; // Compiled JS custom file name.
 
 // jQuery related.
 var jquerySRC             = './node_modules/jquery/dist/jquery.js';
-var jqueryDestination     = './assets/js/';
-var jqueryFile            = 'jquery'; // Compiled JS custom file name.
+var jqueryDestination     = './src/js/vendors/';
+var jqueryFile            = 'jquery';
+
+// What Input related.
+var jsWhatInputSRC             = './node_modules/what-input/dist/what-input.js';
+var jsWhatInputDestination     = './src/js/vendors/';
+var jsWhatInputFile            = 'what-input';
 
 // Foundation JS related.
-var jsFoundationDestination     = './assets/js/';
+var jsFoundationDestination     = './src/js/vendors/';
 var jsFoundationFile            = 'foundation'; // Compiled Foundation JS file name.
 var jsFoundationSRC = [
 		// Foundation core - needed if you want to use any of the components below
-		'./node_modules/foundation-sites/js/foundation.core.js',
-		'./node_modules/foundation-sites/js/foundation.util.*.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.core.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.util.*.js',
 
 		// Pick the components you need in your project
-		'./node_modules/foundation-sites/js/foundation.abide.js',
-		'./node_modules/foundation-sites/js/foundation.accordion.js',
-		'./node_modules/foundation-sites/js/foundation.accordionMenu.js',
-		'./node_modules/foundation-sites/js/foundation.drilldown.js',
-		'./node_modules/foundation-sites/js/foundation.dropdown.js',
-		'./node_modules/foundation-sites/js/foundation.dropdownMenu.js',
-		'./node_modules/foundation-sites/js/foundation.equalizer.js',
-		'./node_modules/foundation-sites/js/foundation.interchange.js',
-		'./node_modules/foundation-sites/js/foundation.magellan.js',
-		'./node_modules/foundation-sites/js/foundation.offcanvas.js',
-		'./node_modules/foundation-sites/js/foundation.orbit.js',
-		'./node_modules/foundation-sites/js/foundation.responsiveMenu.js',
-		'./node_modules/foundation-sites/js/foundation.responsiveToggle.js',
-		'./node_modules/foundation-sites/js/foundation.reveal.js',
-		'./node_modules/foundation-sites/js/foundation.slider.js',
-		'./node_modules/foundation-sites/js/foundation.sticky.js',
-		'./node_modules/foundation-sites/js/foundation.tabs.js',
-		'./node_modules/foundation-sites/js/foundation.toggler.js',
-		'./node_modules/foundation-sites/js/foundation.tooltip.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.abide.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.accordion.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.accordionMenu.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.drilldown.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.dropdown.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.dropdownMenu.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.equalizer.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.interchange.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.magellan.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.offcanvas.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.orbit.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.responsiveMenu.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.responsiveToggle.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.reveal.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.slider.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.sticky.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.tabs.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.toggler.js',
+		'./node_modules/foundation-sites/dist/js/plugins/foundation.tooltip.js',
 	];
 
 // Images related.
@@ -209,40 +214,40 @@ gulp.task( 'browser-sync', function() {
   *
   */
   gulp.task('minify-styles', function () {
- 	gulp.src( styleSRC )
- 	.pipe( sourcemaps.init() )
- 	.pipe( sass( {
- 	  errLogToConsole: true,
- 	  // outputStyle: 'compact',
- 	  // outputStyle: 'compressed',
- 	  // outputStyle: 'nested',
- 	  outputStyle: 'expanded',
- 	  precision: 10
- 	} ) )
- 	.on('error', console.error.bind(console))
- 	.pipe( sourcemaps.write( { includeContent: false } ) )
- 	.pipe( sourcemaps.init( { loadMaps: true } ) )
- 	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
+	gulp.src( styleSRC )
+	.pipe( sourcemaps.init() )
+	.pipe( sass( {
+	  errLogToConsole: true,
+	  // outputStyle: 'compact',
+	  // outputStyle: 'compressed',
+	  // outputStyle: 'nested',
+	  outputStyle: 'expanded',
+	  precision: 10
+	} ) )
+	.on('error', console.error.bind(console))
+	.pipe( sourcemaps.write( { includeContent: false } ) )
+	.pipe( sourcemaps.init( { loadMaps: true } ) )
+	.pipe( autoprefixer( AUTOPREFIXER_BROWSERS ) )
 
- 	.pipe( sourcemaps.write ( './' ) )
- 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
- 	.pipe( gulp.dest( styleDestination ) )
+	.pipe( sourcemaps.write ( './' ) )
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( styleDestination ) )
 
- 	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
- 	.pipe( mmq( { log: true } ) ) // Merge Media Queries only for .min.css version.
+	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+	.pipe( mmq( { log: true } ) ) // Merge Media Queries only for .min.css version.
 
- 	.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
+	.pipe( browserSync.stream() ) // Reloads style.css if that is enqueued.
 
- 	.pipe( rename( { suffix: '.min' } ) )
- 	.pipe( minifycss( {
- 	  maxLineLen: 10
- 	}))
- 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
- 	.pipe( gulp.dest( styleDestination ) )
+	.pipe( rename( { suffix: '.min' } ) )
+	.pipe( minifycss( {
+	  maxLineLen: 10
+	}))
+	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( gulp.dest( styleDestination ) )
 
- 	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
- 	.pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
- 	.pipe( notify( { message: 'TASK: "minify-styles" Completed! 💯', onLast: true } ) )
+	.pipe( filter( '**/*.css' ) ) // Filtering stream to only css files
+	.pipe( browserSync.stream() )// Reloads style.min.css if that is enqueued.
+	.pipe( notify( { message: 'TASK: "minify-styles" Completed! 💯', onLast: true } ) )
   });
 
 
@@ -266,87 +271,64 @@ gulp.task( 'browser-sync', function() {
 	.pipe( notify( { message: 'TASK: "vendorsJs" Completed! 💯', onLast: true } ) );
  });
 
-
  /**
   * Task: `customJS`.
-  *
   * Concatenate and uglify custom JS scripts.
   *
-  * This task does the following:
-  *     1. Gets the source folder for JS custom files
-  *     2. Concatenates all the files and generates custom.js
-  *     3. Renames the JS file with suffix .min.js
-  *     4. Uglifes/Minifies the JS file and generates custom.min.js
   */
  gulp.task( 'customJS', function() {
-	gulp.src( jsCustomSRC )
+  gulp.src( jsCustomSRC )
 	.pipe( concat( jsCustomFile + '.js' ) )
-	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
-	.pipe( gulp.dest( jsCustomDestination ) )
-	.pipe( rename( {
-	  basename: jsCustomFile,
-	  suffix: '.min'
-	}))
-	.pipe( uglify() )
-	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
+	.pipe( lineec() )
 	.pipe( gulp.dest( jsCustomDestination ) )
 	.pipe( notify( { message: 'TASK: "customJs" Completed! 💯', onLast: true } ) );
  });
 
+
  /**
   * Task: `jquery`.
-  * Concatenate and uglify jQuery if you need jQuery to be enqueued separately.
+  * Builds the jQuery library.
   */
  gulp.task( 'jquery', function() {
 	gulp.src( jquerySRC )
 	.pipe( concat( jqueryFile + '.js' ) )
 	.pipe( lineec() )
 	.pipe( gulp.dest( jqueryDestination ) )
-	.pipe( rename( {
-	  basename: jqueryFile,
-	  suffix: '.min'
-	}))
-	.pipe( uglify() )
-	.pipe( lineec() )
-	.pipe( gulp.dest( jqueryDestination ) )
 	.pipe( notify( { message: 'TASK: "jquery" Completed! 💯', onLast: true } ) );
  });
 
+  /**
+	* Task: `what_input`.
+	* Builds the What Input library that tracks the input method (mouse, keyboard, touch)
+	* used in conjuction with Foundation.
+	*/
+  gulp.task( 'what_input', function() {
+	return gulp.src( jsWhatInputSRC )
+	.pipe( concat( jsWhatInputFile + '.js' ) )
+	.pipe( lineec() )
+	.pipe( gulp.dest( jsWhatInputDestination ) )
+	.pipe( notify( { message: 'TASK: "what_input" Completed! 💯', onLast: true } ) );
+  });
+
  /**
   * Task: `foundationJS`.
-  * Concatenate and uglify Foundation JS files if you need Foundation to be enqueued separately.
-  * Foundation is saved in src/js/vendors by default to be concatenated with other JS files.
+  * Builds the Foundation library.
   */
  gulp.task( 'foundationJS', function() {
 	return gulp.src( jsFoundationSRC )
-	.pipe(babel({
-		presets: ['es2015'],
-	    compact: true
-	}))
 	.pipe( concat( jsFoundationFile + '.js' ) )
 	.pipe( lineec() )
-	.pipe( gulp.dest( jsVendorDestination ) ) // You can use Foundation or Vendor destination.
-	.pipe( rename( {
-	  basename: jsFoundationFile,
-	  suffix: '.min'
-	}))
-	.pipe( uglify() )
-	.pipe( lineec() )
-	.pipe( gulp.dest( jsVendorDestination ) )
+	.pipe( gulp.dest( jsFoundationDestination ) ) // You can use Foundation or Vendor destination.
 	.pipe( notify( { message: 'TASK: "foundationJS" Completed! 💯', onLast: true } ) );
  });
 
  /**
   * Task: `allJS`.
-  * Concatenate and uglify all JS scripts in a single file.
+  * Concatenate and uglify all Foundation and custom JS scripts in a single file. Use it in production.
   *
   */
  gulp.task( 'allJS', function() {
-	return gulp.src( [jquerySRC,jsVendorSRC,jsCustomSRC] )
-	.pipe(babel({
-		presets: ['es2015'],
-	    compact: true
-	}))
+	return gulp.src( [jsVendorSRC,jsCustomSRC] )
 	.pipe( concat( jsCustomFile + '.js' ) )
 	.pipe( lineec() ) // Consistent Line Endings for non UNIX systems.
 	.pipe( gulp.dest( jsCustomDestination ) )
@@ -417,7 +399,7 @@ gulp.task( 'browser-sync', function() {
   *
   * Watches for file changes and runs specific tasks.
   */
- gulp.task( 'default', ['styles', 'vendorsJs', 'customJS', 'images', 'browser-sync'], function () {
+ gulp.task( 'default', ['styles', 'images', 'browser-sync'], function () {
   gulp.watch( projectPHPWatchFiles, reload ); // Reload on PHP file changes.
   gulp.watch( styleWatchFiles, [ 'styles' ] ); // Reload on SCSS file changes.
   gulp.watch( vendorJSWatchFiles, [ 'vendorsJs', reload ] ); // Reload on vendorsJs file changes.

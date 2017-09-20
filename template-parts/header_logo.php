@@ -15,7 +15,7 @@ if ( $logo_header ) {
 	$logo_header_alt = get_bloginfo( 'name' );
 };
 
-$logo_output = '<div id="header-logo-container" itemscope itemtype="http://schema.org/">';
+$logo_output = '<div id="header-logo-container" class="small-12 medium-3 columns" itemscope itemtype="http://schema.org/">';
 
 if ( is_front_page() || is_home() ) :
 	$logo_output = $logo_output . '<a href="' . home_url() . '" rel="home">';

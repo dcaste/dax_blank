@@ -4,7 +4,19 @@
 	padding: 1em 0em;
 	text-transform: uppercase;
 
+	a{
 
+		@include transitions;
+
+		&:link, &:visited{
+			color: $grey_light;
+		}
+
+		&:hover, &:active{
+			color: $white;
+		}
+
+	}
 
 	#header-logo-container{
 		a{
@@ -24,6 +36,12 @@
 
 			}
 		}
+	}
+
+	.sub-menu{
+		margin:0px;
+		list-style-type: none;
+		padding:0px;
 	}
 
 

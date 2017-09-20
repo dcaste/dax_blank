@@ -20,7 +20,7 @@ $menu_defaults = array(
 	'after'				=> '',
 	'link_before'		=> '',
 	'link_after'		=> '',
-	'items_wrap'		=> '<ul id="%1$s" class="%2$s" data-dropdown-menu>%3$s</ul>',
+	'items_wrap'		=> '<ul id="%1$s" class="%2$s" data-dropdown-menu data-disable-hover="true" data-click-open="true">%3$s</ul>',
 	'depth' 			=> 0,
 	'walker' 			=> ''
 );

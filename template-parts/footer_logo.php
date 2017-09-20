@@ -12,7 +12,7 @@ if ( $logo_footer ) {
 	$logo_footer_alt = $logo_footer['alt'];
 } else {
 	$logo_footer_url = get_template_directory_uri() . '/assets/img/logo_footer.png';
-	$logo_footer_alt = bloginfo( 'name' );
+	$logo_footer_alt = get_bloginfo( 'name' );
 };
 
 $logo_output = '<div id="footer-logo-container" itemscope itemtype="http://schema.org/">';

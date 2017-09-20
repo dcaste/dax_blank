@@ -5,44 +5,48 @@
 get_header();
 ?>
 
+<?php if (have_posts()): ?>
+
 	<main>
 		<section>
 
-			<?php if (have_posts()): while (have_posts()) : the_post(); ?>
+			<?php while (have_posts()) : the_post(); ?>
 
-				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
+				<header id="main-blog-title">
+					<div class="row column">
 
-					<header>
 						<?php
 						if ( is_single() ) :
 							the_title( '<h1 class="post-title">', '</h1>' );
 						else :
 							the_title( '<h2 class="post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
-						endif;
-
-						if ( 'post' === get_post_type() ) : ?>
-						<div class="post-meta">
-							<?php //dax_blank_posted_on(); ?>
-						</div>
-						<?php
 						endif; ?>
-					</header>
 
-					<?php the_content(); ?>
-				</article>
-			<?php endwhile; ?>
+					</div>
+				</header>
 
-			<?php else: ?>
+				<div id="main-content" class="row">
+
+					<article id="post-<?php the_ID(); ?>" <?php post_class( 'small-12 large-8 columns' ); ?> >
+						<?php the_content(); ?>
+						<?php comments_template(); ?>
+					</article>
+
+					<?php get_sidebar() ?>
+
+				</div>
+
+			<?php endwhile; // Ends while have posts. ?>
+
+		</section>
+	</main>
+
+<?php else: ?>
 
 				<article>
 					<h2><?php esc_html_e( 'Sorry, nothing to display.', 'dax_blank' ); ?></h2>
 				</article>
 
-			<?php endif; ?>
+<?php endif; ?>
 
-		</section>
-
-		<?php comments_template(); ?>
-		<?php get_sidebar() ?>
-	</main>
 <?php get_footer(); ?>

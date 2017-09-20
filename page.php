@@ -4,24 +4,60 @@
  */
 get_header();
 ?>
-<main>
-	<section>
 
-		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
-			<article>
-				<?php the_title( '<h1>', '</h1>' ) ?>
-				<?php the_content(); ?>
-			</article>
-		<?php endwhile; ?>
-		<?php else: ?>
-			<article>
-				<h2><?php esc_html_e( 'Sorry, nothing to display.', 'dax_blank' ); ?></h2>
-			</article>
-		<?php endif; ?>
+<?php if ( have_posts() ) : ?>
 
-	</section>
+	<main >
+		<section>
 
-	<?php get_sidebar(); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
-</main>
+				<header id="main-title">
+					<div class="row column">
+						<?php the_title( '<h1>', '</h1>' ) ?>
+					</div>
+				</header>
+
+				<div id="main-content" class="row">
+
+					<article  class="small-12 large-8 columns">
+						<?php the_content(); ?>
+					</article>
+
+					<?php get_sidebar(); ?>
+
+				</div>
+
+			<?php endwhile; // Ends while have posts. ?>
+
+		</section>
+	</main>
+
+<?php else: ?>
+
+	<main>
+		<section>
+
+			<header id="main-title">
+				<div class="row column">
+					<h1><?php esc_html_e( 'Sorry, nothing to display.', 'dax_blank' ); ?></h1>
+				</div>
+			</header>
+
+			<div id="main-content" class="row">
+
+				<article>
+					<p><?php esc_html_e( 'Sorry, nothing to display.', 'dax_blank' ); ?></p>
+				</article>
+
+				<?php get_sidebar(); ?>
+
+			</div>
+
+		</section>
+
+	</main>
+
+<?php endif; // Ends if have posts. ?>
+
 <?php get_footer(); ?>

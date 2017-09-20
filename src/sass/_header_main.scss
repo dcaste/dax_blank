@@ -12,7 +12,7 @@
 		}
 
 		&:hover, &:active{
-			color: $blue_light;
+			color: $primary_color;
 		}
 
 	}
@@ -35,10 +35,6 @@
 
 			}
 		}
-	}
-
-	.menu{
-		font-size: 1.1em;
 	}
 
 	.sub-menu{

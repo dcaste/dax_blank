@@ -2,14 +2,18 @@
  * Fonts. Fonts are loaded locally to improve Google PageSpeed ranking.
  */
 
-// roboto-regular - latin.
+/* roboto-300 - latin */
 @font-face {
   font-family: 'Roboto';
   font-style: normal;
-  font-weight: 400;
-  src: local('Roboto'), local('Roboto-Regular'),
-		 url('../fonts/roboto-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
-		 url('../fonts/roboto-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+  font-weight: 300;
+  src: url('../fonts/roboto-v16-latin-300.eot'); /* IE9 Compat Modes */
+  src: local('Roboto Light'), local('Roboto-Light'),
+       url('../fonts/roboto-v16-latin-300.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-v16-latin-300.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/roboto-v16-latin-300.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/roboto-v16-latin-300.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/roboto-v16-latin-300.svg#Roboto') format('svg'); /* Legacy iOS */
 }
 
 /* oswald-regular - latin */

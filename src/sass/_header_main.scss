@@ -1,19 +1,18 @@
 #main-header{
 
-	background: $black;
-	padding: 1em 0em;
-	text-transform: uppercase;
+	background: $white;
+	padding: 2em 0em;
 
 	a{
 
 		@include transitions;
 
 		&:link, &:visited{
-			color: $grey_light;
+			color: $black;
 		}
 
 		&:hover, &:active{
-			color: $white;
+			color: $blue_light;
 		}
 
 	}
@@ -36,6 +35,10 @@
 
 			}
 		}
+	}
+
+	.menu{
+		font-size: 1.1em;
 	}
 
 	.sub-menu{

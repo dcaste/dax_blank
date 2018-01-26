@@ -33,7 +33,7 @@ if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 
 		wp_deregister_script( 'jquery' );
 
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
+		wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
 
 		// Custom scripts loaded at the footer. jQuery is required in the array.
 		wp_enqueue_script( 'dax_blank_custom_js', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true );

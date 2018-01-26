@@ -7,14 +7,11 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// CSS files.
-add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' ); // Add styles.
-
-// Main JS script.
-add_action( 'wp_enqueue_scripts', 'dax_blank_register_production_scripts', 999 );
+add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' );
+add_action( 'wp_enqueue_scripts', 'dax_blank_register_scripts', 999 );
 
 
-// Enqueue the main Stylesheet.
+// Enqueue stylesheets.
 if ( ! function_exists( 'dax_blank_register_styles' ) ) :
 	function dax_blank_register_styles()
 	{
@@ -25,43 +22,19 @@ if ( ! function_exists( 'dax_blank_register_styles' ) ) :
 	}
 endif;
 
-// Loads several scripts used in the development process.
-if ( ! function_exists( 'dax_blank_register_dev_scripts' ) ) :
+// Enqueue scripts.
+if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 
-	function dax_blank_register_dev_scripts() {
+	function dax_blank_register_scripts() {
 
-		// Deregister the jquery version bundled with WordPress.
+		// Deregister the jQuery version bundled with WordPress.
 		wp_deregister_script( 'jquery' );
 
-		// jQuery placed in the header because some plugins require that jQuery is loaded in the header.
-		wp_enqueue_script( 'jquery', get_template_directory_uri() . '/src/js/vendors/jquery.js', array(), '3.2.1', false );
-
-		// What Input scripts loaded at the footer. jQuery is required in the array.
-		wp_enqueue_script( 'what-input', get_template_directory_uri() . '/src/js/vendors/what-input.js', array('jquery'), '5.0.1', true );
-
-		// Foundation scripts loaded at the footer. jQuery is required in the array.
-		wp_enqueue_script( 'foundation', get_template_directory_uri() . '/src/js/vendors/foundation.js', array('jquery'), '6.4.3', true );
+		// Some plugins require that jQuery is loaded in the header.
+		wp_enqueue_script( 'jquery', get_template_directory_uri() . '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
 
 		// Custom scripts loaded at the footer. jQuery is required in the array.
-		wp_enqueue_script( 'dax_blank_custom_js', get_template_directory_uri() . '/src/js/custom/custom_scripts.js', array('jquery'), '1.0.0', true );
-
-		// Add the comment-reply library on pages where it is necessary.
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
+		wp_enqueue_script( 'dax_blank_custom_js', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true );
 
 	} // Ends function.
-endif;
-
-// Loads only one single JS file.
-if ( ! function_exists( 'dax_blank_register_production_scripts' ) ) :
-
-	function dax_blank_register_production_scripts() {
-
-		wp_deregister_script( 'jquery' );
-		wp_enqueue_script( 'dax_blank_js', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '1.0.0', true );
-
-
-	} // Ends function.
-
 endif;

@@ -23,6 +23,8 @@
 
 			<small><?php the_tags( '', $sep = ', ', '' )?></small>
 
+			<?php the_content(); ?>
+
 		</article>
 
 		<?php endwhile; ?>

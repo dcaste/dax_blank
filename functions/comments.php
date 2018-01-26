@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 // Comment Layout
 function dax_blank_comments($comment, $args, $depth) {
    $GLOBALS['comment'] = $comment; ?>

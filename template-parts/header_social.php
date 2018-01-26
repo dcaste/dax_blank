@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 $facebook = get_field( 'sm_facebook', 'option' );
 $instagram = get_field( 'sm_insta', 'option' );
 $twitter = get_field( 'sm_twitter', 'option' );

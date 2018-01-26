@@ -3,9 +3,6 @@
  * @package dax_blank
  * Template Name: Homepage.
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 get_header(); ?>
 
 	<main id="homepage-main">

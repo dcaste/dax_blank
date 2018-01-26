@@ -2,9 +2,6 @@
 /**
  * @package dax_blank
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 ?>
 
 <form class="search" method="get" action="<?php echo home_url(); ?>" role="search">

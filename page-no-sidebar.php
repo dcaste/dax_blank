@@ -4,9 +4,6 @@
  *
  * Template Name: Page with no sidebar.
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 get_header(); ?>
 
 <?php if ( have_posts() ) : ?>

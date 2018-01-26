@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 // Removes <div> that wraps menus.
 function remove_div_nav($args = '')
 {

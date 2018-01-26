@@ -4,9 +4,6 @@
  *
  * @package dax_blank
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 ?>
 
 <section>

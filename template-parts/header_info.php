@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 // Your contact info.
 $your_address 	= get_field( 'schema_address', 'option' );
 $your_phone		= get_field( 'schema_phone', 'option' );

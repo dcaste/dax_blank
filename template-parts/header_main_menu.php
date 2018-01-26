@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 // Prints the main menu called "Top Bar".
 $menu_defaults = array(
 	'theme_location'	=> 'main',

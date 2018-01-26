@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 if ( ! function_exists( 'pagination' ) ) :
 	function pagination() {
 		global $wp_query;

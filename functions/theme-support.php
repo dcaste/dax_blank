@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 
 	function dax_blank_theme_support() {
@@ -21,7 +19,7 @@ if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 		add_theme_support( 'html5', array('search-form','comment-form','comment-list','gallery','caption', ) );
 
 		// Add post formats support: http://codex.wordpress.org/Post_Formats
-		add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );		
+		add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );
 
 		// Menu support.
 		add_theme_support('menus');

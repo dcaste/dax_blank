@@ -5,8 +5,6 @@
  * @package dax_blank
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' );
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_scripts', 999 );
 

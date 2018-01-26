@@ -2,9 +2,6 @@
 /**
  * @package dax_blank
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 get_header(); ?><!doctype html>
 
 <html <?php language_attributes(); ?> >

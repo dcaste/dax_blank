@@ -2,9 +2,6 @@
 /**
  * @package dax_blank
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit;
-
 ?>
 
 		<!-- Starts Main Footer. -->

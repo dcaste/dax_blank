@@ -30,8 +30,5 @@ require_once( get_template_directory().'/functions/pagination.php' );
 // Comments.
 require_once( get_template_directory().'/functions/comments.php' );
 
-// Add Woocommerce.
-require_once( get_template_directory().'/functions/woocommerce.php' );
-
 // Add helpers functions.
 require_once( get_template_directory().'/functions/helpers.php' );

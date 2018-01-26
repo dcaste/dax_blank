@@ -12,7 +12,7 @@ if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 		// Wordpress will create the <title> tag.
 		add_theme_support( 'title-tag' );
 
-		// Support for thumbnails and custom image sizes. Custom image sizes are found in /functions/thumbnails.php.
+		// Support for thumbnails and custom image sizes.
 		add_theme_support('post-thumbnails');
 
 		// Print fields in HTML5 format.
@@ -28,4 +28,4 @@ if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 
 	add_action( 'after_setup_theme', 'dax_blank_theme_support' );
 
-endif; // End if Theme Support function exists.
+endif;

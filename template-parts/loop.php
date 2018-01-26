@@ -30,7 +30,7 @@
 	<?php else: ?>
 
 		<article>
-			<h2><?php esc_html_e( 'Sorry, nothing to display.', 'dax_blank' ); ?></h2>
+			<h2><?php __( 'Sorry, nothing to display.', 'dax_blank' ); ?></h2>
 		</article>
 
 	<?php endif; ?>

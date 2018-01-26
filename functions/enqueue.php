@@ -10,8 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' );
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_scripts', 999 );
 
-
-// Enqueue stylesheets.
+// Stylesheets.
 if ( ! function_exists( 'dax_blank_register_styles' ) ) :
 	function dax_blank_register_styles()
 	{
@@ -22,19 +21,22 @@ if ( ! function_exists( 'dax_blank_register_styles' ) ) :
 	}
 endif;
 
-// Enqueue scripts.
+/*
+ * Scripts.
+ * Deregister the jQuery version bundled with WordPress
+ * and load it in the header since some plugins required it.
+ * Change the 'false' attribute to 'true' if you want to load it in the footer.
+*/
 if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 
 	function dax_blank_register_scripts() {
 
-		// Deregister the jQuery version bundled with WordPress.
 		wp_deregister_script( 'jquery' );
 
-		// Some plugins require that jQuery is loaded in the header.
 		wp_enqueue_script( 'jquery', get_template_directory_uri() . '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
 
 		// Custom scripts loaded at the footer. jQuery is required in the array.
 		wp_enqueue_script( 'dax_blank_custom_js', get_template_directory_uri() . '/assets/js/scripts.js', array('jquery'), '1.0.0', true );
 
-	} // Ends function.
+	}
 endif;

@@ -21,21 +21,12 @@ if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 		add_theme_support( 'html5', array('search-form','comment-form','comment-list','gallery','caption', ) );
 
 		// Add post formats support: http://codex.wordpress.org/Post_Formats
-		add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );
-
-		// Declare WooCommerce support per http://docs.woothemes.com/document/third-party-custom-theme-compatibility/
-		add_theme_support( 'woocommerce' );
-
-		// Add styles.css as editor style https://codex.wordpress.org/Editor_Style
-		add_editor_style( '/css/styles.min.css' );
-
-		// RSS.
-		// add_theme_support( 'automatic-feed-links' );
+		add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );		
 
 		// Menu support.
 		add_theme_support('menus');
 
-	} // End Theme Support function.
+	}
 
 	add_action( 'after_setup_theme', 'dax_blank_theme_support' );
 

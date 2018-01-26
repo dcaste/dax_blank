@@ -9,7 +9,7 @@ if ( ! function_exists( 'dax_blank_sidebars' ) ) :
 
 	function dax_blank_sidebars() {
 		$args = array(
-			'id'						=> 'sidebar-1'
+			'id'						=> 'sidebar-1',
 			'class'         => 'sidebar-1',
 			'name'          => __( 'Sidebar Area 1', 'dax_blank' ),
 			'before_title'  => '<h2 class="widget-title">',

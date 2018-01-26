@@ -9,11 +9,12 @@ if ( ! function_exists( 'dax_blank_sidebars' ) ) :
 
 	function dax_blank_sidebars() {
 		$args = array(
-			'class'         => 'widget_area_1',
-			'name'          => __( 'Widget Area 1', 'dax_blank' ),
+			'id'						=> 'sidebar-1'
+			'class'         => 'sidebar-1',
+			'name'          => __( 'Sidebar Area 1', 'dax_blank' ),
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+			'before_widget' => '<aside class="widget %2$s">',
 			'after_widget'  => '</aside>',
 		);
 		register_sidebar( $args );

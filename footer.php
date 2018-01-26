@@ -4,21 +4,20 @@
  */
 ?>
 
-		<!-- Starts Main Footer. -->
-		<footer id="footer-main" itemscope itemtype="http://schema.org/">
 
-			<div class="row">
+	<footer>
+		<div class="footer-copyright">
+			<?php
+				$copyright_output = bloginfo('name');
+				$copyright_output = $copyright_output . ' &copy ';
+				$copyright_output = $copyright_output . date('Y');
+				$copyright_output = $copyright_output . ' ' . __( 'All Rights Reserved' , 'dax_blank' );
+				echo $copyright_output;
+			?>
+		</div>
+	</footer>
 
-				<div class="small-12 medium-6 columns"><?php get_template_part( 'template-parts/footer_logo' ); ?></div>
-
-				<div id="copyright" class="small-12 medium-6 columns"><?php bloginfo('name'); ?> &copy; <?php echo date('Y'); ?> - All Rights Reserved.</div>
-
-			</div>
-
-		</footer>
-		<!-- Ends Main Footer. -->
-
-		<?php wp_footer(); ?>
+	<?php wp_footer(); ?>
 
 	</body>
 </html>

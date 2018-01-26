@@ -9,13 +9,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 // CSS files.
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' ); // Add styles.
-add_action( 'login_enqueue_scripts', 'dax_blank_register_styles', 10 ); // Add our styes to Login page.
 
-// JS scripts. Use it in development process. It loads the scripts separately.
-add_action( 'wp_enqueue_scripts', 'dax_blank_register_dev_scripts', 999 );
-
-// Main JS script. Use it in production. It loads one single minified file.
-// add_action( 'wp_enqueue_scripts', 'dax_blank_register_production_scripts', 999 );
+// Main JS script.
+add_action( 'wp_enqueue_scripts', 'dax_blank_register_production_scripts', 999 );
 
 
 // Enqueue the main Stylesheet.
@@ -24,7 +20,7 @@ if ( ! function_exists( 'dax_blank_register_styles' ) ) :
 	{
 		wp_register_style('styles', get_template_directory_uri() . '/assets/css/styles.css', array(), '1.0.0', 'all');
 		wp_enqueue_style('styles');
-		wp_register_style('fontawesome', 'https://use.fontawesome.com/50b3308390.css', array(), '4.7.0', 'all');
+		wp_register_style('fontawesome', '//use.fontawesome.com/releases/v5.0.4/js/all.js', array(), '5.0.4', 'all');
 		wp_enqueue_style('fontawesome');
 	}
 endif;
@@ -65,10 +61,7 @@ if ( ! function_exists( 'dax_blank_register_production_scripts' ) ) :
 		wp_deregister_script( 'jquery' );
 		wp_enqueue_script( 'dax_blank_js', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '1.0.0', true );
 
-		// Add the comment-reply library on pages where it is necessary.
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
+
 	} // Ends function.
 
 endif;

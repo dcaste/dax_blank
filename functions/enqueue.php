@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // CSS files.
 add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' ); // Add styles.
 add_action( 'login_enqueue_scripts', 'dax_blank_register_styles', 10 ); // Add our styes to Login page.
@@ -70,4 +72,3 @@ if ( ! function_exists( 'dax_blank_register_production_scripts' ) ) :
 	} // Ends function.
 
 endif;
-

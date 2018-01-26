@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Get logo image from ACF field. If field is empty, use fallback image instead.
 $logo_header = get_field( 'logo_main', 'option' );
 if ( $logo_header ) {

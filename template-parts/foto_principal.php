@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $icono = get_field( 'logo_sec', 'option' );
 
 if ( is_archive() ) {

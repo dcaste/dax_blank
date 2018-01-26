@@ -2,7 +2,11 @@
 /**
  * @package dax_blank
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 ?>
+
 <aside id="sidebar" class="small-12 large-4 columns">
 
 	<div class="sidebar-widget">

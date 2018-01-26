@@ -2,6 +2,9 @@
 /**
  * @package dax_blank
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( function_exists( 'dax_pagination' ) ) :
 	dax_pagination();
 elseif ( is_paged() ) :

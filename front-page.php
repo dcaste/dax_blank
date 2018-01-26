@@ -3,8 +3,11 @@
  * @package dax_blank
  * Template Name: Homepage.
  */
-get_header();
-?>
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+get_header(); ?>
+
 	<main id="homepage-main">
 
 		<?php get_template_part( 'template-parts/home_bienvenida' ); ?>

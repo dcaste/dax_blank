@@ -2,8 +2,10 @@
 /**
  * @package dax_blank
  */
-get_header();
-?>
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+get_header(); ?>
 	<main>
 		<section>
 			<h1><?php _e( 'Latest Posts'); ?></h1>

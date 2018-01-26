@@ -1,3 +1,14 @@
+<?php
+/**
+ * Main Loop
+ *
+ * @package dax_blank
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+?>
+
 <section>
 	<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 

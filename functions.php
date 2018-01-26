@@ -3,6 +3,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Add theme support.
 require_once( get_template_directory().'/functions/theme-support.php' );
 

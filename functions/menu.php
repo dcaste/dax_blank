@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! function_exists( 'dax_blank_menus' ) ) :
 	function dax_blank_menus() {
 		$locations = array(

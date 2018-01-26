@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 // Text to show at the footer of WP Admin.
 function custom_admin_footer() {
 	echo 'Web Design: Dax Castellón Meyrat | <a href="http://daxcastellon.com" target="_blank">daxcastellon.com</a>';

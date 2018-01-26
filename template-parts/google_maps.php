@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 $location = get_field( 'mapa', 'option' );
 if(  $location ):
 ?>

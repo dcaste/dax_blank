@@ -5,6 +5,8 @@
  * @package dax_blank
  */
 
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 if ( ! function_exists( 'dax_blank_sidebars' ) ) {
 
 	function dax_blank_sidebars() {

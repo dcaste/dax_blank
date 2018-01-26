@@ -4,6 +4,9 @@
  *
  * @package dax_blank
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 ?>
 
 <?php if ( have_rows('slideshow') ) : ?>

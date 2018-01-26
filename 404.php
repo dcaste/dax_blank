@@ -2,8 +2,11 @@
 /**
  * @package dax_blank
  */
-get_header();
-?>
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+get_header(); ?>
+
 <main>
 	<section>
 		<article>

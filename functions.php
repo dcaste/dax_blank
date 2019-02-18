@@ -1,26 +1,25 @@
 <?php
 /**
+ * Theme functions.
+ * *
  * @package dax_blank
+ *
  */
 
-// Theme constants.
-define( 'DAX_BLANK_URI', get_template_directory_uri() ); // The parent theme directory.
-define( 'DAX_BLANK_CHILD_URI', get_stylesheet_directory_uri() ); // The child theme directory.
+require get_template_directory() . '/functions/theme-support.php';
 
-// Add theme support.
-require_once( get_template_directory().'/functions/theme-support.php' );
+require get_template_directory() . '/functions/enqueue.php';
 
-// Register menus and menu walkers.
-require_once( get_template_directory().'/functions/menu.php' );
+require get_template_directory() . '/functions/helpers.php';
 
-// Enqueue scripts.
-require_once( get_template_directory().'/functions/enqueue.php' );
+require get_template_directory() . '/functions/menu.php';
 
-// Widget areas.
-require_once( get_template_directory().'/functions/widgets.php' );
+require get_template_directory() . '/functions/sidebars.php';
 
-// Comments.
-require_once( get_template_directory().'/functions/comments.php' );
+require get_template_directory() . '/functions/thumbnails.php';
 
-// Add helpers functions.
-require_once( get_template_directory().'/functions/helpers.php' );
+require get_template_directory() . '/functions/pagination.php';
+
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/functions/woocommerce.php';
+}

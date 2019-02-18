@@ -5,30 +5,39 @@
  * @package dax_blank
  */
 
-add_action( 'wp_enqueue_scripts', 'dax_blank_register_styles' );
-add_action( 'wp_enqueue_scripts', 'dax_blank_register_scripts', 999 );
+if ( ! function_exists( 'dax_blank_register_css' ) ) :
 
-// Stylesheets.
-if ( ! function_exists( 'dax_blank_register_styles' ) ) :
-	function dax_blank_register_styles()
-	{
-		wp_register_style('styles', get_template_directory_uri() . '/style.css', array(), '1.0.0', 'all');
-		wp_enqueue_style('styles');
-		wp_register_style('fontawesome', '//use.fontawesome.com/releases/v5.0.4/js/all.js', array(), '5.0.4', 'all');
-		wp_enqueue_style('fontawesome');
+	/**
+	 * Enqueue CSS files.
+	 */
+	function dax_blank_register_css() {
+		wp_register_style( 'styles', get_template_directory_uri() . 'dist/css/styles.css', array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'styles' );
 	}
+
+	add_action( 'wp_enqueue_scripts', 'dax_blank_register_css' );
+	add_action( 'login_enqueue_scripts', 'dax_blank_register_css', 10 ); // Add styles to login area.
+
 endif;
 
-/*
- * Scripts.
- * Deregister the jQuery version bundled with WordPress
- * and load it in the header since some plugins required it.
- * Change the 'false' attribute to 'true' if you want to load it in the footer.
-*/
 if ( ! function_exists( 'dax_blank_register_scripts' ) ) :
 
+	/**
+	 * Register JS scripts.
+	 * Deregister the jQuery version bundled with WordPress and load it in the header since some plugins required it.
+	 * Change the 'false' attribute to 'true' if you want to load it in  footer.
+	 */
 	function dax_blank_register_scripts() {
-		wp_deregister_script( 'jquery' );
-		wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
+		if ( is_admin() ) {
+			return;
+		} else {
+			wp_deregister_script( 'jquery' );
+			wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js', array(), '3.3.1', false );
+		}
+
+		// Enqueue local scripts.
+		wp_enqueue_script( 'medco-vendors', get_template_directory_uri() . '/dist/js/scripts.js', array(), '1.0.0', 'all' );
 	}
+	add_action( 'wp_enqueue_scripts', 'dax_blank_register_scripts' );
+
 endif;

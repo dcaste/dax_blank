@@ -7,22 +7,27 @@
 
 if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 
+	/**
+	 * Add several theme support functions.
+	 *
+	 */
 	function dax_blank_theme_support() {
 
-		// Wordpress will create the <title> tag.
 		add_theme_support( 'title-tag' );
 
-		// Support for thumbnails and custom image sizes.
-		add_theme_support('post-thumbnails');
+		add_theme_support( 'post-thumbnails' );
 
-		// Print fields in HTML5 format.
-		add_theme_support( 'html5', array('search-form','comment-form','comment-list','gallery','caption', ) );
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
 
-		// Add post formats support: http://codex.wordpress.org/Post_Formats
-		add_theme_support( 'post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat') );
+		add_theme_support( 'menus' );
 
-		// Menu support.
-		add_theme_support('menus');
+		add_theme_support( 'responsive-embeds' );
 
 	}
 

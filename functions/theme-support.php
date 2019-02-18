@@ -9,7 +9,6 @@ if ( ! function_exists( 'dax_blank_theme_support' ) ) :
 
 	/**
 	 * Add several theme support functions.
-	 *
 	 */
 	function dax_blank_theme_support() {
 

@@ -1,15 +1,15 @@
 <?php
 /**
- * Sidebar de wisdgets.
+ * Widgets sidebar.
  *
  * @package dax_blank
  */
 
-if ( ! is_active_sidebar( 'sidebar_blog' ) ) {
+if ( ! is_active_sidebar( 'main_sidebar' ) || ! is_active_sidebar( 'secondary_sidebar' ) ) {
 	return;
 }
 ?>
 
-<aside class="sidebar-blog">
-	<?php dynamic_sidebar( 'sidebar_blog' ); ?>
-</aside><!-- #secondary -->
+<aside id="sidebar">
+	<?php dynamic_sidebar(); ?>
+</aside>

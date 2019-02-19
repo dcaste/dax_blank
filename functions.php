@@ -18,8 +18,6 @@ require get_template_directory() . '/functions/sidebars.php';
 
 require get_template_directory() . '/functions/thumbnails.php';
 
-require get_template_directory() . '/functions/pagination.php';
-
 // Add WooCommerce functions.
 if ( class_exists( 'WooCommerce' ) ) {
 	require get_template_directory() . '/functions/woocommerce.php';

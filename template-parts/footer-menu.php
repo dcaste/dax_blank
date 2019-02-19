@@ -1,16 +1,15 @@
 <?php
 /**
- * Menú de navegación que aparece en el Footer.
+ * Main footer navigation menu.
  *
  * @package dax_blank
  */
 
 ?>
 
-<div id="footer-nav" class="grid-container">
+<div id="footer-nav">
 	<?php
-	// Imprime el menú de navegación.
-	$menu_footer = array(
+	$footer_menu = array(
 		'theme_location'  => 'footer',
 		'menu'            => '',
 		'container'       => '',
@@ -28,6 +27,6 @@
 		'depth'           => 0,
 		'walker'          => '',
 	);
-	wp_nav_menu( $menu_footer );
+	wp_nav_menu( $footer_menu );
 	?>
 </div>

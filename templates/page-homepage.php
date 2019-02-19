@@ -1,6 +1,6 @@
 <?php
 /**
- * Página principal. Homepage.
+ * Homepage.
  *
  * @package dax_blank
  *
@@ -13,11 +13,7 @@ get_header();
 <main id="main">
 	<article>
 
-		<?php get_template_part( 'template-parts/home-slideshow' ); ?>
-		<?php get_template_part( 'template-parts/home-servicios' ); ?>
-		<?php get_template_part( 'template-parts/salud-dia' ); ?>
-		<?php get_template_part( 'template-parts/productos-destacados' ); ?>
-		<?php get_template_part( 'template-parts/testimonials' ); ?>
+		This is the homepage
 
 	</article>
 </main>

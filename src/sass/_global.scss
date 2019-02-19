@@ -1,0 +1,274 @@
+/* Estilos básicos */
+body{
+	font-family: $fonts;
+	font-size: 16px;
+}
+
+ h1, h2, h3, h4, h5, h6{
+	 margin: 0px;
+	 font-weight: $regular;
+	 color: $gris-oscuro;
+
+	 .color-rojo{
+		 font-weight: $bold;
+	 }
+
+	 &+p{ margin-top: 0.5em }
+
+ }
+
+ h1{ font-size: 3rem }
+ h2{ font-size: 2rem }
+ h3{ font-size: 1.6rem }
+ h4{ font-size: 1.5rem }
+ h5{ font-size: 1.3rem }
+ h6{ font-size: 1.2rem }
+
+ [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], select, textarea{
+		background-color: $gris-claro;
+		border: none;
+		cursor: text;
+		padding: 1rem;		
+		line-height: 1em;
+		border-radius: $global-radius;
+		
+		&:focus{
+			outline: 0px;
+		}
+
+		&::placeholder{ 
+			color: $gris-medio; 
+			font-size: 0.9em
+		}
+ }
+
+ select{
+	 cursor: pointer;
+ }
+
+ strong{
+	font-weight: $bold;
+	color: $negro;
+ }
+
+a{
+	text-decoration: none;
+  transition: $transition;
+  color: $azul_claro;
+
+  &:hover{
+	  color: $rojo;
+  }
+}
+
+img{ max-width: 100% }
+
+p{
+	margin: 0px;
+	line-height: 1.5em;
+}
+
+p+p{ margin-top: 1em }
+
+
+/* BOTONES *******************************/
+.button,
+.boton,
+[type="reset"],
+[type="submit"]
+{
+	@extend .medco-sweep-to-right;
+	margin: 0px;
+	overflow: hidden !important;
+	border: none;
+	border-radius: 2rem !important;
+	padding: 1rem !important;
+	background: $rojo !important;
+	color: $blanco;
+	font-size: 0.9em !important;
+	font-weight: $regular !important;
+	cursor: pointer;
+	line-height: 1;
+
+	&:focus{
+		outline: 0px;
+	}
+
+}
+
+.boton-blanco{
+	@extend .button;
+	color: $gris-oscuro;
+	background: $blanco !important;
+
+	&::before{
+		background: $gris-claro2
+	}
+	&:hover{ color: $negro }
+}
+
+.boton-azul{
+	@extend .button;
+	background: $azul !important;
+	&::before{
+		background: $azul_claro
+	}
+}
+
+.boton-gris{
+	@extend .button;
+	color: $gris-oscuro;
+	background: $gris-claro !important;
+
+	&:hover{
+		color: $negro
+	}
+
+	&::before{
+		background: $gris-claro2
+	}
+}
+
+.boton-tel-1800{
+	@extend .button;
+	color: $gris-oscuro;
+	background: $gris-claro !important;
+	font-weight: $bold !important;
+	font-size: 0.9em;
+	padding: 0.75rem 1rem;
+
+	&::before{ background: $rojo }
+
+	&:hover{
+		color: $blanco;
+		.color-rojo, .color-azul{ color: $blanco }
+	}
+
+}
+
+.enlace-whatsapp{ 
+	color: $whatsapp-verde !important;
+	&:hover{
+		color: $azul_claro !important;	
+	}
+}
+
+mark{
+	background-color: lighten( $celeste, 20 );
+}
+
+.grid-container{ margin: auto }
+
+#go-to-top{
+	display: none;
+	position: fixed;
+ 	bottom: 2rem;
+ 	right: 2rem;
+ 	z-index: 999999;
+	border: 2px solid $blanco;
+	outline: none;
+	padding: 1rem 0.8rem !important;
+	font-size: 0.8rem;
+	border-radius: 50%;
+	margin: 0px;
+}
+
+.fondo-degradado-gris-abajo{ @include gradiente( 180, $blanco, $gris-claro ); }
+.fondo-degradado-gris-arriba{	@include gradiente( 0, $blanco, $gris-claro ); }
+.gradiente-ambos-colores{ @include gradiente( 135, $rojo, $azul ); }
+
+/* Sombras */
+.sombra { box-shadow: 0px 0px 38px rgba(41,49,64,0.07) }
+.sombra2{ box-shadow: 0px 10px 38px rgba(41,49,64,0.20) }
+.sombra0{ box-shadow: 0px 0px 0px rgba(41,49,64,0) }
+.sombra-azul{ box-shadow: 0px 0px 0px $azul_claro }
+
+/* Colores de texto */
+.color-rojo{ color: $rojo }
+.color-azul{ color: $azul }
+.color-gris{ color: $gris }
+
+.icono-redondo{
+	font-size: 3rem;
+	background: $blanco;
+	border-radius: 50%;
+	border: 2px solid;
+	padding: 1rem;
+}
+
+.card{
+	border-radius: $global-radius;
+	@extend .sombra;
+	background: $blanco;
+	transition: box-shadow $transition;
+	padding: 1rem;
+
+	&:hover{
+		@extend .sombra2;
+	}
+}
+
+.margin-bottom-2{ margin-bottom: 2rem }
+
+.text-center{ text-align: center }
+
+.search-form{ display: grid }
+
+.entry-header{
+	background: $rojo;
+
+	h1{
+		color: $blanco;
+		text-align: center;
+		margin: 0px auto;
+		font-weight: $regular;
+		max-width: 95%;
+	}
+
+}
+
+/*
+ * Media Queries.
+ *
+ */
+
+@media only screen and (min-width:320px) {
+
+	.entry-header{
+		padding: 2rem 0px;
+
+		h1{ font-size: 1.75rem }
+	}
+
+	.grid-container{ max-width: 95% }
+
+}
+
+@media only screen and (min-width:480px) {
+
+}
+
+@media only screen and (min-width:768px) {
+
+	.entry-header{
+		padding: 4rem 0px;
+
+		h1{ font-size: 3rem }
+	}
+
+}
+
+@media only screen and (min-width:1024px) {
+
+
+}
+
+@media only screen and (min-width:1140px) {
+}
+
+@media only screen and (min-width:1280px) {
+}
+
+@media only screen and (min-width:1440px) {
+	.grid-container{ max-width: 1400px }
+}

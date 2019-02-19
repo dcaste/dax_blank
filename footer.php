@@ -1,23 +1,29 @@
 <?php
 /**
+ * Footer principal.
+ *
  * @package dax_blank
  */
+
 ?>
+		<footer id="footer">
 
+			<?php get_template_part( 'template-parts/footer-info' ); ?>
+			<?php get_template_part( 'template-parts/footer-menu' ); ?>
+			<?php get_template_part( 'template-parts/footer-newsletter' ); ?>
 
-	<footer>
-		<div class="footer-copyright">
-			<?php
-				$copyright_output = bloginfo('name');
-				$copyright_output = $copyright_output . ' &copy ';
-				$copyright_output = $copyright_output . date('Y');
-				$copyright_output = $copyright_output . ' ' . __( 'All Rights Reserved' , 'dax_blank' );
-				echo $copyright_output;
-			?>
-		</div>
-	</footer>
+			<div id="footer-copyright" class="grid-container">
+				&copy <?php echo esc_html( date( 'Y' ) ); ?> Farmacias MEDCO Xolotlán. Todos los derechos reservados.
+			</div>
 
-	<?php wp_footer(); ?>
+		</footer>
+
+		<!-- Botón #go-to-top -->
+		<a href="#top-bar" id="go-to-top" class="button" title="Ir hacia arriba">
+			<i class="icon-up"></i>
+		</a>
+
+		<?php wp_footer(); ?>
 
 	</body>
 </html>

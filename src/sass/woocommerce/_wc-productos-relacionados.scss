@@ -1,0 +1,60 @@
+/* Sección de productos relacionados */
+
+.woocommerce{
+
+	#productos-relacionados{
+		display: grid;
+		grid-gap: 1rem;
+	}
+
+
+	/*
+	* Media Queries.
+	*
+	*/
+
+	@media only screen and (min-width:320px) {
+
+		#productos-relacionados{
+			grid-template-columns: 1fr;
+			grid-template-rows: auto;
+		}
+		
+				
+	}
+
+	@media only screen and (min-width:480px) {
+
+	}
+
+	@media only screen and (min-width:768px) {
+
+		#productos-relacionados{
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: auto;
+	
+			h3{
+				grid-column-start: 1;
+				grid-column-end: 4;
+			}
+		}		
+		
+	}
+
+	@media only screen and (min-width:1024px) {
+
+
+
+	}
+
+	@media only screen and (min-width:1140px) {
+
+		
+
+	}
+
+	@media only screen and (min-width:1280px) {
+
+	}
+
+}

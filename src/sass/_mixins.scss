@@ -1,0 +1,6 @@
+// Mixins.
+
+@mixin gradiente( $angulo, $color1, $color2 ){
+	$angulo: $angulo+deg;
+	background: linear-gradient($angulo, $color1 0%,$color2 100%);
+}

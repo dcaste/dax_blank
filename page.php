@@ -1,6 +1,6 @@
 <?php
 /**
- * Página por defecto.
+ * Default Page.
  *
  * @package dax_blank
  */
@@ -21,7 +21,7 @@ get_header();
 					<?php the_title( '<h1>', '</h1>' ); ?>
 				</header>
 
-				<div id="contenido" class="grid-container">
+				<div id="content">
 					<?php the_content(); ?>
 				</div>
 

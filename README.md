@@ -1,3 +1,6 @@
+# Notice
+In heavy development, not functional at this moment.
+
 # Dax Blank
 The objective of this repo is to show my PHP, Wordpress and Jquery programming abilities. I use this theme to develop websites for my clients.
 
